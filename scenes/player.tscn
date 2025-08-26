@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccgxpwrltjlt1"]
+
+[ext_resource type="Texture2D" uid="uid://shht2qh4yvwv" path="res://assets/WizardJumpPrepare.png" id="1_wvqb5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1pk0"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v1pk0")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_wvqb5")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

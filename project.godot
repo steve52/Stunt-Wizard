@@ -11,11 +11,17 @@ config_version=5
 [application]
 
 config/name="Stunt Wizard"
-run/main_scene="res://gap_jump_stunt.tscn"
+run/main_scene="res://scenes/gap_jump_stunt.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/mode=3
+window/stretch/mode="viewport"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
