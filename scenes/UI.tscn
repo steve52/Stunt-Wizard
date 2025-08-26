@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://w6fhh20qoq77"]
+
+[ext_resource type="Script" path="res://scenes/UI.gd" id="1_mfq3j"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_mfq3j")
+
+[node name="Style" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 32.0
+offset_right = 61.0
+offset_bottom = 55.0
+text = "Style: 0"
+
+[node name="Mana" type="Node" parent="."]
+
+[node name="ManaLabel" type="Label" parent="Mana"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Mana:"
+
+[node name="ManaPoints" type="Label" parent="Mana"]
+offset_left = 54.0
+offset_top = 3.0
+offset_right = 107.0
+offset_bottom = 26.0
