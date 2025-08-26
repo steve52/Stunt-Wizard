@@ -14,14 +14,48 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 const SPELLS = {
 	"airjet": {
-		"cost": 100
+		"cost": 80
 	},
 	"shark": {
 		"cost": 100, 
 		"style": {
-			"dodge": 100,
+			"dodge": 300,
+			"fail": -100,
+			"special": 400
+		}
+	},
+	"explosion": {
+		"cost": 70,
+		"style": 100
+	},
+	"lightning": {
+		"cost": 100,
+		"style": {
+			"dodge": 300,
 			"fail": -100,
 			"special": 300
+		}
+	},
+	"waterjet": {
+		"cost": 70
+	},
+	"portal": {
+		"cost": 100,
+		"style": {
+			"dodge": 350,
+			"fail": -100,
+			"special": 350
+		}
+	},
+	"leap": {
+		"cost": 80
+	},
+	"flamingring": {
+		"cost": 110,
+		"style": {
+			"dodge": 0,
+			"fail": -150,
+			"special": 500
 		}
 	}
 }
