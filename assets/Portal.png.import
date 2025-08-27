@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2eh6j57djlth"
-path="res://.godot/imported/PlatformTileset.png-3bba99525e270e7cc10f5bef5990d17b.ctex"
+uid="uid://dxsumai2v0oax"
+path="res://.godot/imported/Portal.png-83d786d3c22f5572035bb7cee566baae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PlatformTileset.png"
-dest_files=["res://.godot/imported/PlatformTileset.png-3bba99525e270e7cc10f5bef5990d17b.ctex"]
+source_file="res://assets/Portal.png"
+dest_files=["res://.godot/imported/Portal.png-83d786d3c22f5572035bb7cee566baae.ctex"]
 
 [params]
 

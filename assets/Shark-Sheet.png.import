@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2eh6j57djlth"
-path="res://.godot/imported/PlatformTileset.png-3bba99525e270e7cc10f5bef5990d17b.ctex"
+uid="uid://ypvxpnq4l2he"
+path="res://.godot/imported/Shark-Sheet.png-a1fb128995b3625a7fa0f28fc5f635fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PlatformTileset.png"
-dest_files=["res://.godot/imported/PlatformTileset.png-3bba99525e270e7cc10f5bef5990d17b.ctex"]
+source_file="res://assets/Shark-Sheet.png"
+dest_files=["res://.godot/imported/Shark-Sheet.png-a1fb128995b3625a7fa0f28fc5f635fc.ctex"]
 
 [params]
 

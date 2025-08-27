@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2eh6j57djlth"
-path="res://.godot/imported/PlatformTileset.png-3bba99525e270e7cc10f5bef5990d17b.ctex"
+uid="uid://bey8i082ju01h"
+path="res://.godot/imported/WizardSprites-Sheet.png-cf6119af77dd59109b2ee6a9761caee6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PlatformTileset.png"
-dest_files=["res://.godot/imported/PlatformTileset.png-3bba99525e270e7cc10f5bef5990d17b.ctex"]
+source_file="res://assets/WizardSprites-Sheet.png"
+dest_files=["res://.godot/imported/WizardSprites-Sheet.png-cf6119af77dd59109b2ee6a9761caee6.ctex"]
 
 [params]
 
