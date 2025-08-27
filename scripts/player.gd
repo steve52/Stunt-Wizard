@@ -2,13 +2,11 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const AIR_RESISTANCE = 10
+const AIR_RESISTANCE = 2
+var gravity = 490
 
-var manaPower = 1000
+var manaPower = 1000000
 var stylePoints = 0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var ui = get_parent().get_node("UI")
 
@@ -63,17 +61,30 @@ const SPELLS = {
 func castSpell(spell):
 	if (spell == 'airjet'):
 		if manaPower >= SPELLS.airjet.cost:
-			velocity.x = -1 * SPEED
+			velocity.x = -2.5 * SPEED
 			manaPower -= SPELLS.airjet.cost
 			
+	if (spell == 'leap'):
+		if manaPower >= SPELLS.leap.cost:
+			velocity.y = 1 * JUMP_VELOCITY
+			manaPower -= SPELLS.leap.cost
+			
 	ui.updateMana(manaPower)
+		
+func launch():
+	velocity.x = -3.5 * SPEED
+	velocity.y = 2 * JUMP_VELOCITY
 	
 func getInput():
-	if (Input.is_action_just_pressed("ui_left")):
+	if (Input.is_action_just_pressed("airjet")):
 		castSpell('airjet')
+	if (Input.is_action_just_pressed("leap")):
+		castSpell('leap')
+	if (Input.is_key_pressed(KEY_ENTER)):
+		launch()
 
-func _physics_process(delta):
 	
+func _physics_process(delta):
 	if (velocity.x < 0):
 		velocity.x += AIR_RESISTANCE
 	elif (velocity.x > 0):
@@ -85,7 +96,7 @@ func _physics_process(delta):
 
 	getInput()
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
 
 	move_and_slide()
