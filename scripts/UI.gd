@@ -106,3 +106,30 @@ func animateButton(btn):
 	timer.wait_time = 1.0
 	timer.start()
 	timer.timeout.connect(_on_timer_timeout.bind(btn))
+
+
+
+func _on_air_jet_pressed():
+	player.castSpell('airjet')
+
+func _on_water_jet_pressed():
+	player.castSpell('waterjet')
+
+
+func _on_leap_pressed():
+	player.castSpell('leap')
+
+func _on_explosion_pressed():
+	player.castSpell('explosion')
+
+func _on_portal_pressed():
+	player.castSpell('portal')
+
+func _on_lightning_pressed():
+	player.castSpell('lightning')
+
+func _on_shark_pressed():
+	player.castSpell('shark')
+
+func _on_flaming_ring_pressed():
+	player.castSpell('flamingring')

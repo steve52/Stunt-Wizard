@@ -99,3 +99,11 @@ text = "Flaming Ring
 4"
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="HBoxContainer/Air Jet" to="." method="_on_air_jet_pressed"]
+[connection signal="pressed" from="HBoxContainer/Water Jet" to="." method="_on_water_jet_pressed"]
+[connection signal="pressed" from="HBoxContainer/Leap" to="." method="_on_leap_pressed"]
+[connection signal="pressed" from="HBoxContainer/Explosion" to="." method="_on_explosion_pressed"]
+[connection signal="pressed" from="HBoxContainer/Portal" to="." method="_on_portal_pressed"]
+[connection signal="pressed" from="HBoxContainer/Lightning" to="." method="_on_lightning_pressed"]
+[connection signal="pressed" from="HBoxContainer/Shark" to="." method="_on_shark_pressed"]
+[connection signal="pressed" from="HBoxContainer/Flaming ring" to="." method="_on_flaming_ring_pressed"]
