@@ -8,6 +8,8 @@ var gravity = 490
 var manaPower = 1000000
 var stylePoints = 0
 
+
+
 @onready var ui = get_parent().get_node("UI")
 
 const SPELLS = {
@@ -116,6 +118,9 @@ func launch():
 	velocity.y = 2 * JUMP_VELOCITY
 	$AnimatedSprite2D.frame = 1
 func getInput():
+	if (GameManager.isLevelFinished()):
+		return
+		
 	if (Input.is_action_just_pressed("airjet")):
 		castSpell('airjet')
 	if (Input.is_action_just_pressed("leap")):

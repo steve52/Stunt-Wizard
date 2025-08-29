@@ -25,3 +25,31 @@ offset_top = 3.0
 offset_right = 107.0
 offset_bottom = 26.0
 text = "1000"
+
+[node name="LevelCompleteMsg" type="Label" parent="."]
+visible = false
+offset_left = 405.0
+offset_top = 230.0
+offset_right = 913.0
+offset_bottom = 299.0
+theme_override_font_sizes/font_size = 50
+text = "🎉 Level Complete 🎉"
+
+[node name="LevelFailedMsg" type="Label" parent="."]
+visible = false
+offset_left = 405.0
+offset_top = 230.0
+offset_right = 913.0
+offset_bottom = 299.0
+theme_override_font_sizes/font_size = 50
+text = "🎉 Level Failed 🎉"
+
+[node name="Retry" type="Button" parent="."]
+visible = false
+offset_left = 612.0
+offset_top = 318.0
+offset_right = 662.0
+offset_bottom = 349.0
+text = "Retry"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
