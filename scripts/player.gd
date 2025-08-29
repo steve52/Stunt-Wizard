@@ -63,7 +63,7 @@ func castSpell(spell):
 		if manaPower >= SPELLS.airjet.cost:
 			velocity.x = -2.5 * SPEED
 			manaPower -= SPELLS.airjet.cost
-			
+			$AnimatedSprite2D.animation = "AirJet"
 	if (spell == 'leap'):
 		if manaPower >= SPELLS.leap.cost:
 			velocity.y = 1 * JUMP_VELOCITY
