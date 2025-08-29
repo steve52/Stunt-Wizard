@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccgxpwrltjlt1"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_gj1v2"]
+[ext_resource type="Texture2D" uid="uid://bey8i082ju01h" path="res://assets/Art/WizardSprites-Sheet.png" id="2_0dftp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1pk0"]
+size = Vector2(11, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pjyx"]
+atlas = ExtResource("2_0dftp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7f5a"]
+atlas = ExtResource("2_0dftp")
+region = Rect2(0, 576, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn6ft"]
+atlas = ExtResource("2_0dftp")
+region = Rect2(64, 576, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4k2k3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pjyx")
+}],
+"loop": false,
+"name": &"AirJet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7f5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn6ft")
+}],
+"loop": false,
+"name": &"JumpStart",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_gj1v2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_v1pk0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.9, 0.9)
+limit_bottom = 600
+editor_draw_limits = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4k2k3")
+animation = &"JumpStart"
