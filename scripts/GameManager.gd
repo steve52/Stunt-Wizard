@@ -23,3 +23,6 @@ func retryLevel():
 	playerState = ALIVE
 	levelState = NOT_STARTED
 	get_tree().reload_current_scene()
+
+func startGame():
+	get_tree().change_scene_to_file("res://scenes/gap_jump_stunt.tscn")
