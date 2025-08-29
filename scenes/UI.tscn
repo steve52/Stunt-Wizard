@@ -7,23 +7,25 @@ script = ExtResource("1_mfq3j")
 
 [node name="Style" type="Label" parent="."]
 offset_left = 5.0
-offset_top = 32.0
+offset_top = 84.0
 offset_right = 61.0
-offset_bottom = 55.0
+offset_bottom = 107.0
 text = "Style: 0"
 
 [node name="Mana" type="Node" parent="."]
 
 [node name="ManaLabel" type="Label" parent="Mana"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 3.0
+offset_top = 53.0
+offset_right = 51.0
+offset_bottom = 76.0
 text = "Mana:"
 
 [node name="ManaPoints" type="Label" parent="Mana"]
-offset_left = 54.0
-offset_top = 3.0
-offset_right = 107.0
-offset_bottom = 26.0
+offset_left = 57.0
+offset_top = 54.0
+offset_right = 110.0
+offset_bottom = 77.0
 text = "1000"
 
 [node name="LevelCompleteMsg" type="Label" parent="."]
@@ -51,5 +53,49 @@ offset_top = 318.0
 offset_right = 662.0
 offset_bottom = 349.0
 text = "Retry"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Air Jet" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Air Jet
+←"
+
+[node name="Water Jet" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Water Jet
+→"
+
+[node name="Leap" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Leap
+↑"
+
+[node name="Explosion" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Explosion
+↓"
+
+[node name="Portal" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Portal
+1"
+
+[node name="Lightning" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Lightning
+2"
+
+[node name="Shark" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Shark
+3"
+
+[node name="Flaming ring" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Flaming Ring
+4"
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
