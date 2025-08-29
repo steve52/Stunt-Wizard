@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dd3kttrhn18xh"]
 
 [ext_resource type="Texture2D" uid="uid://3xi76dlxkxrr" path="res://assets/Art/Portal.png" id="1_8ck17"]
-[ext_resource type="Script" path="res://scenes/portal.gd" id="1_maqic"]
+[ext_resource type="Script" path="res://scripts/portal.gd" id="1_8yv4l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ng1av"]
 radius = 30.0
@@ -12,7 +12,7 @@ size = Vector2(362, 1680)
 
 [node name="Portal" type="Area2D"]
 collision_layer = 8
-script = ExtResource("1_maqic")
+script = ExtResource("1_8yv4l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8ck17")

@@ -4,12 +4,12 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const AIR_RESISTANCE = 4
 var gravity = 490
-
+var SpellsAvailable = true
 var manaPower = 1000000
 var stylePoints = 0
 
 const PORTAL = preload("res://scenes/portal.tscn")
-
+const LIGHTNING = preload("res://scenes/lightning.tscn")
 
 @onready var ui = get_parent().get_node("UI")
 
@@ -101,6 +101,7 @@ func castSpell(spell):
 		if manaPower >= SPELLS.lightning.cost:
 			print("lightning")
 			$AnimatedSprite2D.animation = "Lightning"
+			SpawnLightning()
 			$SpellEnd.start()
 	if (spell == 'shark'):
 		if manaPower >= SPELLS.shark.cost:
@@ -154,6 +155,22 @@ func _physics_process(delta):
 	getInput()
 	move_and_slide()
 
+func SpawnLightning():
+	var Lightning = LIGHTNING.instantiate()
+	var LightningX = position.x + velocity.x * .5
+	var LightningY = position.y - 100
+	get_parent().add_child(Lightning)
+	Lightning.position.x = LightningX
+	Lightning.position.y = LightningY
+	print(Lightning.position)
+	print(position)
+
+func DodgeLightning():
+	print("Dodged Lightning")
+
+func LightningHit():
+	velocity.y = 100
+	velocity.x /= 2
 
 func SpawnPortal():
 	var Portal = PORTAL.instantiate()
@@ -165,13 +182,13 @@ func SpawnPortal():
 
 func PortalDodge():
 	print("Dodged Portal")
-	pass
 
 func EnterPortal():
 	position.y = position.y + 300
 	velocity.y = -1 * velocity.x
 	velocity.x = 0
 	$AnimatedSprite2D.animation = "PortalExit"
+	$SpellEnd.start()
 
 func _on_spell_end_timeout():
 	$AnimatedSprite2D.animation = "WizardBase"

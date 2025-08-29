@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb25uud84edsd"]
+
+[ext_resource type="Script" path="res://scripts/lightning.gd" id="1_v5su0"]
+[ext_resource type="Texture2D" uid="uid://l3l0h1bk2q3b" path="res://assets/Art/LightningWarning.png" id="2_6duvu"]
+[ext_resource type="Texture2D" uid="uid://dxkreynetdv4v" path="res://assets/Art/Lightning.png" id="2_pt04j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af2id"]
+atlas = ExtResource("2_6duvu")
+region = Rect2(0, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k13ol"]
+atlas = ExtResource("2_pt04j")
+region = Rect2(0, 0, 64, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qhss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af2id")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k13ol")
+}],
+"loop": false,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vohd"]
+size = Vector2(37.0248, 241.938)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2k2xe"]
+size = Vector2(314.75, 413.25)
+
+[node name="Lightning" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 8
+script = ExtResource("1_v5su0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6qhss")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.49349, -0.516084)
+rotation = -0.0331446
+shape = SubResource("RectangleShape2D_5vohd")
+disabled = true
+
+[node name="DodgeArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DodgeArea"]
+position = Vector2(-180, 8)
+shape = SubResource("RectangleShape2D_2k2xe")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="DodgeArea" to="." method="_on_dodge_area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
