@@ -28,28 +28,49 @@ text = "1000"
 
 [node name="LevelCompleteMsg" type="Label" parent="."]
 visible = false
-offset_left = 405.0
-offset_top = 230.0
-offset_right = 913.0
-offset_bottom = 299.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.5
+offset_top = -34.5
+offset_right = 268.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "🎉 Level Complete 🎉"
 
 [node name="LevelFailedMsg" type="Label" parent="."]
 visible = false
-offset_left = 405.0
-offset_top = 230.0
-offset_right = 913.0
-offset_bottom = 299.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -34.5
+offset_right = 254.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "🎉 Level Failed 🎉"
 
 [node name="Retry" type="Button" parent="."]
 visible = false
-offset_left = 612.0
-offset_top = 318.0
-offset_right = 662.0
-offset_bottom = 349.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = 43.0
+offset_right = 18.0
+offset_bottom = 74.0001
+grow_horizontal = 2
+grow_vertical = 2
 text = "Retry"
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
