@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ypvxpnq4l2he"
-path="res://.godot/imported/Shark-Sheet.png-a1fb128995b3625a7fa0f28fc5f635fc.ctex"
+uid="uid://cicrupadkwrsu"
+path="res://.godot/imported/FlamingRing.png-7089b1af358c06f8a1feab8ea4fee379.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Shark-Sheet.png"
-dest_files=["res://.godot/imported/Shark-Sheet.png-a1fb128995b3625a7fa0f28fc5f635fc.ctex"]
+source_file="res://assets/Art/FlamingRing.png"
+dest_files=["res://.godot/imported/FlamingRing.png-7089b1af358c06f8a1feab8ea4fee379.ctex"]
 
 [params]
 

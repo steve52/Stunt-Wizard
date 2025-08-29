@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccgxpwrltjlt1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gj1v2"]
-[ext_resource type="Texture2D" uid="uid://bey8i082ju01h" path="res://assets/WizardSprites-Sheet.png" id="2_0dftp"]
+[ext_resource type="Texture2D" uid="uid://bey8i082ju01h" path="res://assets/Art/WizardSprites-Sheet.png" id="2_0dftp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1pk0"]
 size = Vector2(11, 26)

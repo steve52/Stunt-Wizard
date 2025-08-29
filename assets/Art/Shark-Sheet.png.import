@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://shht2qh4yvwv"
-path="res://.godot/imported/WizardJumpPrepare.png-468eff0861877062a3103e0b5cc1b3b2.ctex"
+uid="uid://ypvxpnq4l2he"
+path="res://.godot/imported/Shark-Sheet.png-69f59ccf548d9b458a5bfcaf6a63ecf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/WizardJumpPrepare.png"
-dest_files=["res://.godot/imported/WizardJumpPrepare.png-468eff0861877062a3103e0b5cc1b3b2.ctex"]
+source_file="res://assets/Art/Shark-Sheet.png"
+dest_files=["res://.godot/imported/Shark-Sheet.png-69f59ccf548d9b458a5bfcaf6a63ecf2.ctex"]
 
 [params]
 

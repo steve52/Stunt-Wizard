@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6lfc8goyxejb"
-path="res://.godot/imported/WaterSprites.png-12813312915ebde3c14c38f6c3af518b.ctex"
+uid="uid://dxsumai2v0oax"
+path="res://.godot/imported/Portal.png-2bb8ac7b3ac090e161c44f0dfd192f1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/WaterSprites.png"
-dest_files=["res://.godot/imported/WaterSprites.png-12813312915ebde3c14c38f6c3af518b.ctex"]
+source_file="res://assets/Art/Portal.png"
+dest_files=["res://.godot/imported/Portal.png-2bb8ac7b3ac090e161c44f0dfd192f1b.ctex"]
 
 [params]
 
