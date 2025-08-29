@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://tt3ecsy85jue"]
+
+[ext_resource type="Script" path="res://scripts/falling_zone.gd" id="1_34psv"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b6guy"]
+a = Vector2(14, -8351)
+b = Vector2(6, 8111)
+
+[node name="FallingZone" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_34psv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, -8)
+rotation = 1.5708
+shape = SubResource("SegmentShape2D_b6guy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cspqffhv5w2xn"]
+
+[ext_resource type="Script" path="res://scripts/landing_zone.gd" id="1_prj0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80ux4"]
+size = Vector2(6500.5, 46.5)
+
+[node name="LandingZone" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_prj0c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3250, 0)
+shape = SubResource("RectangleShape2D_80ux4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
