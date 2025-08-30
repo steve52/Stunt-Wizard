@@ -67,6 +67,7 @@ func castSpell(spell):
 			manaPower -= SPELLS.airjet.cost
 			$AnimatedSprite2D.animation = "AirJet"
 			$SpellEnd.start()
+			ui.castSpell(spell)
 	if (spell == 'leap'):
 		if manaPower >= SPELLS.leap.cost:
 			if velocity.y <= 0:
@@ -76,11 +77,13 @@ func castSpell(spell):
 			$AnimatedSprite2D.play("Leap")
 			manaPower -= SPELLS.leap.cost
 			$SpellEnd.start()
+			ui.castSpell(spell)
 	if (spell == 'waterjet'):
 		if manaPower >= SPELLS.waterjet.cost:
 			velocity.x += 1 * SPEED
 			manaPower -= SPELLS.waterjet.cost
 			$SpellEnd.start()
+			ui.castSpell(spell)
 	if (spell == 'explosion'):
 		if manaPower >= SPELLS.explosion.cost:
 			if velocity.y <= 0:
@@ -91,26 +94,31 @@ func castSpell(spell):
 			manaPower -= SPELLS.explosion.cost
 			$AnimatedSprite2D.play("Explosion")
 			$SpellEnd.start()
+			ui.castSpell(spell)
 	if (spell == 'portal'):
 		if manaPower >= SPELLS.portal.cost:
 			print("portal")
 			$AnimatedSprite2D.animation = "Portal"
 			$SpellEnd.start()
+			ui.castSpell(spell)
 	if (spell == 'lightning'):
 		if manaPower >= SPELLS.lightning.cost:
 			print("lightning")
 			$AnimatedSprite2D.animation = "Lightning"
 			$SpellEnd.start()
+			ui.castSpell(spell)
 	if (spell == 'shark'):
 		if manaPower >= SPELLS.shark.cost:
 			print("shark")
 			$AnimatedSprite2D.animation = "Shark"
 			$SpellEnd.start()
+			ui.castSpell(spell)
 	if (spell == 'flamingring'):
 		if manaPower >= SPELLS.flamingring.cost:
 			print("flamingring")
 			$AnimatedSprite2D.animation = "FlamingRing"
 			$SpellEnd.start()
+			ui.castSpell(spell)
 	ui.updateMana(manaPower)
 
 func launch():
