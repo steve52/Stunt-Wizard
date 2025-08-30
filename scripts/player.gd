@@ -5,10 +5,10 @@ const JUMP_VELOCITY = -400.0
 const AIR_RESISTANCE = 4
 var gravity = 490
 var SpellsAvailable = false
-var manaPower = 1000000
-
+var manaPower = 200
+var Started = false
 var stylePoints = 0
-
+var End = -7600
 const PORTAL = preload("res://scenes/portal.tscn")
 const LIGHTNING = preload("res://scenes/lightning.tscn")
 const FLAMING_RING = preload("res://scenes/flaming_ring.tscn")
@@ -115,6 +115,7 @@ func castSpell(spell):
 				$AnimatedSprite2D.animation = "Portal"
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				manaPower -= SPELLS.portal.cost
 				%PortalSound.play()
 		if (spell == 'lightning'):
 			if manaPower >= SPELLS.lightning.cost:
@@ -123,6 +124,7 @@ func castSpell(spell):
 				SpawnLightning()
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				manaPower -= SPELLS.lightning.cost
 				%LightningSound.play()
 		if (spell == 'shark'):
 			if manaPower >= SPELLS.shark.cost:
@@ -131,6 +133,7 @@ func castSpell(spell):
 				SpawnShark()
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				manaPower -= SPELLS.shark.cost
 				%SharkSound.play()
 		if (spell == 'flamingring'):
 			if manaPower >= SPELLS.flamingring.cost:
@@ -139,16 +142,19 @@ func castSpell(spell):
 				$AnimatedSprite2D.animation = "FlamingRing"
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				manaPower -= SPELLS.flamingring.cost
 				%FlamingRingSound.play()
 		ui.updateMana(manaPower)
 
 func launch():
-	if SpellsAvailable == false:
+	if Started == false:
 		velocity.x = -3.5 * SPEED
 		velocity.y = 2 * JUMP_VELOCITY
 		$AnimatedSprite2D.frame = 1
 		SpellsAvailable = true
 		%JumpStartSound.play()
+		Started = true
+
 func getInput():
 	if (GameManager.isLevelFinished()):
 		return
@@ -174,6 +180,8 @@ func getInput():
 
 	
 func _physics_process(delta):
+	if manaPower < 7:
+		print(position.x)
 	if (velocity.x < 0):
 		velocity.x += AIR_RESISTANCE
 	elif (velocity.x > 0):
@@ -269,3 +277,12 @@ func EnterPortal():
 
 func _on_spell_end_timeout():
 	$AnimatedSprite2D.animation = "WizardBase"
+
+
+func _on_static_body_2d_body_entered(body):
+	velocity.y = 1000
+	velocity.x = 0
+	SpellsAvailable = false
+
+func Landed():
+	$AnimatedSprite2D.play("Win")

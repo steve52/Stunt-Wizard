@@ -7,7 +7,8 @@ extends CanvasLayer
 @onready var retry = $Retry
 @onready var level_complete_msg = $LevelCompleteMsg
 @onready var level_failed_msg = $LevelFailedMsg
-
+var End = -7600
+@onready var Player = %Player
 @onready var air_jet = $"HBoxContainer/Air Jet"
 @onready var water_jet = $"HBoxContainer/Water Jet"
 @onready var leap = $HBoxContainer/Leap
@@ -62,7 +63,9 @@ func _process(delta):
 		shark.disabled = true
 	if player.manaPower < player.SPELLS.flamingring.cost:
 		flaming_ring.disabled = true
-		
+	
+	$DistanceToEndLabel.text = "Distance to landing: " + str(roundi((Player.position.x- End)/10))
+
 func _on_retry_pressed():
 	GameManager.retryLevel()
 	

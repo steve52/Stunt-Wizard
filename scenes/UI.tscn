@@ -10,6 +10,7 @@ offset_left = 5.0
 offset_top = 84.0
 offset_right = 61.0
 offset_bottom = 107.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Style: 0"
 
 [node name="Mana" type="Node" parent="."]
@@ -19,6 +20,7 @@ offset_left = 3.0
 offset_top = 53.0
 offset_right = 51.0
 offset_bottom = 76.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Mana:"
 
 [node name="ManaPoints" type="Label" parent="Mana"]
@@ -26,7 +28,8 @@ offset_left = 57.0
 offset_top = 54.0
 offset_right = 110.0
 offset_bottom = 77.0
-text = "1000"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "200"
 
 [node name="LevelCompleteMsg" type="Label" parent="."]
 visible = false
@@ -118,6 +121,14 @@ text = "Shark
 layout_mode = 2
 text = "Flaming Ring
 4"
+
+[node name="DistanceToEndLabel" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 111.0
+offset_right = 42.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Distance: 760"
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="HBoxContainer/Air Jet" to="." method="_on_air_jet_pressed"]
