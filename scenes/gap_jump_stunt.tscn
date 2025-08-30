@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ccgxpwrltjlt1" path="res://scenes/player.tscn" id="2_rme6x"]
 [ext_resource type="PackedScene" uid="uid://w6fhh20qoq77" path="res://scenes/UI.tscn" id="3_68a5j"]
 [ext_resource type="Texture2D" uid="uid://dd0845qirindo" path="res://assets/Art/1280x720-50px.png" id="4_botvm"]
-[ext_resource type="PackedScene" path="res://scenes/landing_zone.tscn" id="5_2o6hl"]
-[ext_resource type="PackedScene" path="res://scenes/falling_zone.tscn" id="6_bobw3"]
+[ext_resource type="PackedScene" uid="uid://cspqffhv5w2xn" path="res://scenes/landing_zone.tscn" id="5_2o6hl"]
+[ext_resource type="PackedScene" uid="uid://tt3ecsy85jue" path="res://scenes/falling_zone.tscn" id="6_bobw3"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uned7"]
 tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 1, 131072, 0, 1, 1, 0, 1, 65537, 0, 1, 131073, 0, 1, 2, 0, 1, 65538, 0, 1, 131074, 0, 1, 3, 0, 1, 65539, 0, 1, 131075, 0, 1)
