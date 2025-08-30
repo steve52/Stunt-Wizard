@@ -91,14 +91,14 @@ motion_mirroring = Vector2(6000, 2000)
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(4000, 0)
-texture = ExtResource("7_j6q4u")
+texture = ExtResource("21_j6q4u")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("7_j6q4u")
+texture = ExtResource("21_j6q4u")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(2000, 0)
-texture = ExtResource("7_j6q4u")
+texture = ExtResource("21_j6q4u")
 
 [node name="AirJetSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
