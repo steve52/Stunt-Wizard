@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crkeliuv5omx6"]
+[gd_scene load_steps=24 format=3 uid="uid://crkeliuv5omx6"]
 
 [ext_resource type="Texture2D" uid="uid://2eh6j57djlth" path="res://assets/Art/PlatformTileset.png" id="1_vjmbw"]
 [ext_resource type="PackedScene" uid="uid://ccgxpwrltjlt1" path="res://scenes/player.tscn" id="2_rme6x"]
@@ -7,6 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://cspqffhv5w2xn" path="res://scenes/landing_zone.tscn" id="5_2o6hl"]
 [ext_resource type="PackedScene" uid="uid://tt3ecsy85jue" path="res://scenes/falling_zone.tscn" id="6_bobw3"]
 [ext_resource type="Texture2D" uid="uid://2b0sycndji1q" path="res://assets/Art/clouds.png" id="7_j6q4u"]
+[ext_resource type="AudioStream" uid="uid://5ylxicwkayt4" path="res://assets/SoundEffects/AirJet1.wav" id="7_0qoso"]
+[ext_resource type="AudioStream" uid="uid://brc2wshu35422" path="res://assets/SoundEffects/WaterJet1.wav" id="8_4aeq1"]
+[ext_resource type="AudioStream" uid="uid://caxalgejcjjtp" path="res://assets/SoundEffects/Leap.wav" id="9_w38ko"]
+[ext_resource type="AudioStream" uid="uid://dfvgw0bvrkne8" path="res://assets/SoundEffects/Explosion1.wav" id="10_sn8q5"]
+[ext_resource type="AudioStream" uid="uid://bif0sfguiy8m5" path="res://assets/SoundEffects/PortalOpen1.wav" id="11_thuo4"]
+[ext_resource type="AudioStream" uid="uid://ec66vsfy2c82" path="res://assets/SoundEffects/EnterPortal1.wav" id="12_612tu"]
+[ext_resource type="AudioStream" uid="uid://d34sx0a76b5rj" path="res://assets/SoundEffects/Lightning1.wav" id="13_e2s8o"]
+[ext_resource type="AudioStream" uid="uid://5jocvyex2hly" path="res://assets/SoundEffects/Shark1.wav" id="14_f8pgu"]
+[ext_resource type="AudioStream" uid="uid://cbvhb8hb7i41g" path="res://assets/SoundEffects/Explosion2.wav" id="15_c5fau"]
+[ext_resource type="AudioStream" uid="uid://c5qc64um4258j" path="res://assets/SoundEffects/Hit2.wav" id="16_h4kxv"]
+[ext_resource type="AudioStream" uid="uid://bkja6xsy3eaxp" path="res://assets/SoundEffects/StartJump.wav" id="17_5l77b"]
+[ext_resource type="AudioStream" uid="uid://bmjyi2i7feuea" path="res://assets/SoundEffects/Land1.wav" id="18_8uf8m"]
+[ext_resource type="AudioStream" uid="uid://bxyxu6qxepqlj" path="res://assets/SoundEffects/Fail1.wav" id="19_3isxw"]
+[ext_resource type="AudioStream" uid="uid://cmlei1fneeplg" path="res://assets/SoundEffects/Style1.wav" id="20_kp7bc"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uned7"]
 tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 1, 131072, 0, 1, 1, 0, 1, 65537, 0, 1, 131073, 0, 1, 2, 0, 1, 65538, 0, 1, 131074, 0, 1, 3, 0, 1, 65539, 0, 1, 131075, 0, 1)
@@ -78,3 +92,65 @@ texture = ExtResource("7_j6q4u")
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(2000, 0)
 texture = ExtResource("7_j6q4u")
+
+[node name="AirJetSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_0qoso")
+volume_db = -5.0
+
+[node name="WaterJetSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_4aeq1")
+volume_db = -12.0
+
+[node name="LeapSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_w38ko")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("10_sn8q5")
+
+[node name="PortalSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_thuo4")
+
+[node name="EnterPortalSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_612tu")
+
+[node name="LightningSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_e2s8o")
+
+[node name="SharkSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_f8pgu")
+volume_db = -10.0
+
+[node name="FlamingRingSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("15_c5fau")
+volume_db = -12.0
+
+[node name="HitObstacleSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("16_h4kxv")
+
+[node name="JumpStartSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("17_5l77b")
+
+[node name="LandingSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("18_8uf8m")
+
+[node name="FailSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("19_3isxw")
+
+[node name="GainStyleSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("20_kp7bc")
+volume_db = -7.0
+pitch_scale = 0.55
