@@ -3,6 +3,7 @@ extends Node
 enum {NOT_STARTED, STARTED, FINISHED}
 enum {ALIVE, DEAD}
 
+var DevScoreUnlocked = false
 var levelState = NOT_STARTED
 var playerState = ALIVE
 

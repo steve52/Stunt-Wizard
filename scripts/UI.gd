@@ -1,13 +1,17 @@
 extends CanvasLayer
 
-@onready var player = $"../Player"
 
+
+@onready var player = $"../Player"
 @onready var style = $Style
 @onready var mana_points = $Mana/ManaPoints
 @onready var retry = $Retry
 @onready var level_complete_msg = $LevelCompleteMsg
 @onready var level_failed_msg = $LevelFailedMsg
+var GioScore = 8300
+var SteveScore = 0
 var End = -7600
+var Won = false
 @onready var Player = %Player
 @onready var air_jet = $"HBoxContainer/Air Jet"
 @onready var water_jet = $"HBoxContainer/Water Jet"
@@ -20,6 +24,16 @@ var End = -7600
 
 func updateMana(newVal):
 	mana_points.text = str(newVal)
+
+
+func updateStyle(newVal):
+	$StyleBoard/EndStyle.text = str(newVal)
+	if newVal >= GioScore or newVal >= SteveScore:
+		GameManager.DevScoreUnlocked = true
+	if GameManager.DevScoreUnlocked == true:
+		$StyleBoard/StyleTiers.animation = "DevTimeUnlocked"
+	if newVal >= 3000:
+		Won = true
 
 func setSpellManaValues():
 	air_jet.text = "💨 (" + str(player.SPELLS.airjet.cost) + " MP)\n ←"
@@ -42,8 +56,13 @@ func _ready():
 func _process(delta):
 	if (GameManager.isLevelFinished()):
 		retry.visible = true
+		$Retry.position.y = 447
+		if Won == true:
+			$StyleBoard/Label.visible = true
+		if GameManager.DevScoreUnlocked == true:
+			$"StyleBoard/Dev Scores". visible = true
 		if (GameManager.isPlayerAlive()):
-			level_complete_msg.visible = true
+			$StyleBoard.visible = true
 		else:
 			level_failed_msg.visible = true
 
