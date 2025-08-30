@@ -6,11 +6,13 @@ const AIR_RESISTANCE = 4
 var gravity = 490
 var SpellsAvailable = false
 var manaPower = 1000000
+
 var stylePoints = 0
 
 const PORTAL = preload("res://scenes/portal.tscn")
 const LIGHTNING = preload("res://scenes/lightning.tscn")
 const FLAMING_RING = preload("res://scenes/flaming_ring.tscn")
+const SHARK = preload("res://shark.tscn")
 
 @onready var ui = get_parent().get_node("UI")
 
@@ -109,6 +111,7 @@ func castSpell(spell):
 			if manaPower >= SPELLS.shark.cost:
 				print("shark")
 				$AnimatedSprite2D.animation = "Shark"
+				SpawnShark()
 				$SpellEnd.start()
 		if (spell == 'flamingring'):
 			if manaPower >= SPELLS.flamingring.cost:
@@ -168,7 +171,7 @@ func SpawnFlamingRing():
 	Ring.position = Vector2(RingX, RingY)
 
 func DodgedFlamingRing():
-	pass
+	print("Dodged Ring")
 	
 
 func HitFlamingRing():
@@ -180,6 +183,26 @@ func HitFlamingRing():
 func WentThroughFlamingRing():
 	print("Went through the ring!!!")
 	#Add special score here when adding score points
+
+func SpawnShark():
+	var Shark = SHARK.instantiate()
+	var SharkX = position.x - 550
+	var SharkY = position.y + 900
+	get_parent().add_child(Shark)
+	Shark.position = Vector2(SharkX, SharkY)
+	Shark.SetStartHeight()
+
+func HitShark():
+	velocity.x = -50
+	velocity.y = 100
+	$AnimatedSprite2D.animation = "Fall"
+
+func UnderShark():
+	print("Under The Shark!!!!")
+	#Special score here
+
+func DodgedShark():
+	print("Dodged Shark")
 
 func SpawnLightning():
 	var Lightning = LIGHTNING.instantiate()

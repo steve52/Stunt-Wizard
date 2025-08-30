@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnsebxrdjb48u"]
+
+[ext_resource type="Texture2D" uid="uid://ypvxpnq4l2he" path="res://assets/Art/Shark-Sheet.png" id="1_g0tff"]
+[ext_resource type="Script" path="res://shark.gd" id="1_kk1od"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of3dk"]
+atlas = ExtResource("1_g0tff")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geiqt"]
+atlas = ExtResource("1_g0tff")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nei11"]
+atlas = ExtResource("1_g0tff")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bet4v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of3dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geiqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nei11")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kx4si"]
+radius = 5.0
+height = 26.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md24a"]
+size = Vector2(9.75, 256.75)
+
+[node name="Shark" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 16
+script = ExtResource("1_kk1od")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bet4v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kx4si")
+
+[node name="UnderShark" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnderShark"]
+position = Vector2(-1, 131.5)
+shape = SubResource("RectangleShape2D_md24a")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="UnderShark" to="." method="_on_under_shark_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
