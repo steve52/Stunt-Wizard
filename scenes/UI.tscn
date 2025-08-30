@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://w6fhh20qoq77"]
+[gd_scene load_steps=8 format=3 uid="uid://w6fhh20qoq77"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_mfq3j"]
+[ext_resource type="Texture2D" uid="uid://dqohvuf58vtkv" path="res://assets/Art/End Menu-Sheet.png" id="2_amdnj"]
+[ext_resource type="FontFile" uid="uid://bhbjen6m3lld4" path="res://assets/Art/VCR_OSD_MONO_1.001.ttf" id="3_eovhj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2i1n"]
 content_margin_left = 10.0
@@ -13,6 +15,33 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.359069, 0.359069, 0.359069, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i2di"]
+atlas = ExtResource("2_amdnj")
+region = Rect2(0, 0, 80, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4makh"]
+atlas = ExtResource("2_amdnj")
+region = Rect2(80, 0, 80, 92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e81wa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i2di")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4makh")
+}],
+"loop": true,
+"name": &"DevTimeUnlocked",
+"speed": 5.0
+}]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_mfq3j")
@@ -82,10 +111,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = 43.0
-offset_right = 18.0
-offset_bottom = 74.0001
+offset_left = -48.0
+offset_top = 38.0
+offset_right = 2.0
+offset_bottom = 69.0001
 grow_horizontal = 2
 grow_vertical = 2
 text = "Retry"
@@ -181,6 +210,69 @@ offset_right = 42.0
 offset_bottom = 134.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Distance: 760"
+
+[node name="StyleBoard" type="Control" parent="."]
+z_index = -1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StyleTiers" type="AnimatedSprite2D" parent="StyleBoard"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_e81wa")
+animation = &"DevTimeUnlocked"
+
+[node name="EndStyle" type="Label" parent="StyleBoard"]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -130.0
+offset_right = 48.0
+offset_bottom = -85.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_eovhj")
+theme_override_font_sizes/font_size = 41
+text = "1000"
+
+[node name="Dev Scores" type="Node2D" parent="StyleBoard"]
+position = Vector2(-556, -304)
+
+[node name="Gio Score" type="Label" parent="StyleBoard/Dev Scores"]
+offset_left = 563.0
+offset_top = 351.0
+offset_right = 671.0
+offset_bottom = 392.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_eovhj")
+theme_override_font_sizes/font_size = 41
+text = "8300"
+
+[node name="Steve Score" type="Label" parent="StyleBoard/Dev Scores"]
+offset_left = 562.0
+offset_top = 396.0
+offset_right = 677.0
+offset_bottom = 432.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_eovhj")
+theme_override_font_sizes/font_size = 41
+text = "0"
+
+[node name="Label" type="Label" parent="StyleBoard"]
+visible = false
+layout_mode = 0
+offset_left = -69.0
+offset_top = -225.0
+offset_right = 84.0
+offset_bottom = -202.0
+text = "You got the biscuit!!"
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="HBoxContainer/Air Jet" to="." method="_on_air_jet_pressed"]

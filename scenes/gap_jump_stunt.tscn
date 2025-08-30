@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=26 format=3 uid="uid://crkeliuv5omx6"]
-
 
 [ext_resource type="Texture2D" uid="uid://2eh6j57djlth" path="res://assets/Art/PlatformTileset.png" id="1_vjmbw"]
 [ext_resource type="PackedScene" uid="uid://ccgxpwrltjlt1" path="res://scenes/player.tscn" id="2_rme6x"]
@@ -9,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cspqffhv5w2xn" path="res://scenes/landing_zone.tscn" id="5_2o6hl"]
 [ext_resource type="PackedScene" uid="uid://tt3ecsy85jue" path="res://scenes/falling_zone.tscn" id="6_bobw3"]
 [ext_resource type="AudioStream" uid="uid://5ylxicwkayt4" path="res://assets/SoundEffects/AirJet1.wav" id="7_0qoso"]
-[ext_resource type="Texture2D" uid="uid://2b0sycndji1q" path="res://assets/Art/clouds.png" id="21_j6q4u"]
 [ext_resource type="AudioStream" uid="uid://brc2wshu35422" path="res://assets/SoundEffects/WaterJet1.wav" id="8_4aeq1"]
 [ext_resource type="AudioStream" uid="uid://caxalgejcjjtp" path="res://assets/SoundEffects/Leap.wav" id="9_w38ko"]
 [ext_resource type="AudioStream" uid="uid://dfvgw0bvrkne8" path="res://assets/SoundEffects/Explosion1.wav" id="10_sn8q5"]
@@ -23,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://bmjyi2i7feuea" path="res://assets/SoundEffects/Land1.wav" id="18_8uf8m"]
 [ext_resource type="AudioStream" uid="uid://bxyxu6qxepqlj" path="res://assets/SoundEffects/Fail1.wav" id="19_3isxw"]
 [ext_resource type="AudioStream" uid="uid://cmlei1fneeplg" path="res://assets/SoundEffects/Style1.wav" id="20_kp7bc"]
+[ext_resource type="Texture2D" uid="uid://2b0sycndji1q" path="res://assets/Art/clouds.png" id="21_j6q4u"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uned7"]
 tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 1, 131072, 0, 1, 1, 0, 1, 65537, 0, 1, 131073, 0, 1, 2, 0, 1, 65538, 0, 1, 131074, 0, 1, 3, 0, 1, 65539, 0, 1, 131075, 0, 1)
