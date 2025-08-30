@@ -72,6 +72,10 @@ flamingring={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Platform"
 2d_physics/layer_3="Landing Zone"
+2d_physics/layer_4="Portal"
+2d_physics/layer_5="Shark"
+2d_physics/layer_6="Lightning"
+2d_physics/layer_7="FlamingRing"
 
 [rendering]
 

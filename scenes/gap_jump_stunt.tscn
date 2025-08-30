@@ -37,6 +37,7 @@ sources/0 = SubResource("TileSetAtlasSource_elmms")
 pattern_0 = SubResource("TileMapPattern_uned7")
 
 [node name="Gap Jump Stunt" type="Node"]
+metadata/_edit_horizontal_guides_ = [-1.09548e+06]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_erth7")

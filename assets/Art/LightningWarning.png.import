@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3xi76dlxkxrr"
-path="res://.godot/imported/Portal.png-2bb8ac7b3ac090e161c44f0dfd192f1b.ctex"
+uid="uid://l3l0h1bk2q3b"
+path="res://.godot/imported/LightningWarning.png-ed0bbf62c1431bf82360dbc3bebd67c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Art/Portal.png"
-dest_files=["res://.godot/imported/Portal.png-2bb8ac7b3ac090e161c44f0dfd192f1b.ctex"]
+source_file="res://assets/Art/LightningWarning.png"
+dest_files=["res://.godot/imported/LightningWarning.png-ed0bbf62c1431bf82360dbc3bebd67c1.ctex"]
 
 [params]
 

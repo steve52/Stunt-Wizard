@@ -4,11 +4,15 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const AIR_RESISTANCE = 4
 var gravity = 490
-
+var SpellsAvailable = false
 var manaPower = 1000000
+
 var stylePoints = 0
 
-
+const PORTAL = preload("res://scenes/portal.tscn")
+const LIGHTNING = preload("res://scenes/lightning.tscn")
+const FLAMING_RING = preload("res://scenes/flaming_ring.tscn")
+const SHARK = preload("res://shark.tscn")
 
 @onready var ui = get_parent().get_node("UI")
 
@@ -61,70 +65,77 @@ const SPELLS = {
 }
 
 func castSpell(spell):
-	if (spell == 'airjet'):
-		if manaPower >= SPELLS.airjet.cost:
-			velocity.x += -1.5 * SPEED
-			manaPower -= SPELLS.airjet.cost
-			$AnimatedSprite2D.animation = "AirJet"
-			$SpellEnd.start()
-			ui.castSpell(spell)
-	if (spell == 'leap'):
-		if manaPower >= SPELLS.leap.cost:
-			if velocity.y <= 0:
-				velocity.y += 1 * JUMP_VELOCITY
-			else:
-				velocity.y = 1 * JUMP_VELOCITY
-			$AnimatedSprite2D.play("Leap")
-			manaPower -= SPELLS.leap.cost
-			$SpellEnd.start()
-			ui.castSpell(spell)
-	if (spell == 'waterjet'):
-		if manaPower >= SPELLS.waterjet.cost:
-			velocity.x += 1 * SPEED
-			manaPower -= SPELLS.waterjet.cost
-			$SpellEnd.start()
-			ui.castSpell(spell)
-	if (spell == 'explosion'):
-		if manaPower >= SPELLS.explosion.cost:
-			if velocity.y <= 0:
-				velocity.y += randf_range(1.25, 1.75) * JUMP_VELOCITY
-			else:
-				velocity.y = randf_range(1.25, 1.75) * JUMP_VELOCITY
-			velocity.x += randf_range(-2.75, -2.25) * SPEED
-			manaPower -= SPELLS.explosion.cost
-			$AnimatedSprite2D.play("Explosion")
-			$SpellEnd.start()
-			ui.castSpell(spell)
-	if (spell == 'portal'):
-		if manaPower >= SPELLS.portal.cost:
-			print("portal")
-			$AnimatedSprite2D.animation = "Portal"
-			$SpellEnd.start()
-			ui.castSpell(spell)
-	if (spell == 'lightning'):
-		if manaPower >= SPELLS.lightning.cost:
-			print("lightning")
-			$AnimatedSprite2D.animation = "Lightning"
-			$SpellEnd.start()
-			ui.castSpell(spell)
-	if (spell == 'shark'):
-		if manaPower >= SPELLS.shark.cost:
-			print("shark")
-			$AnimatedSprite2D.animation = "Shark"
-			$SpellEnd.start()
-			ui.castSpell(spell)
-	if (spell == 'flamingring'):
-		if manaPower >= SPELLS.flamingring.cost:
-			print("flamingring")
-			$AnimatedSprite2D.animation = "FlamingRing"
-			$SpellEnd.start()
-			ui.castSpell(spell)
-	ui.updateMana(manaPower)
+	if SpellsAvailable == true:
+		if (spell == 'airjet'):
+			if manaPower >= SPELLS.airjet.cost:
+				velocity.x += -1.5 * SPEED
+				manaPower -= SPELLS.airjet.cost
+				$AnimatedSprite2D.animation = "AirJet"
+				$SpellEnd.start()
+        ui.castSpell(spell)
+		if (spell == 'leap'):
+			if manaPower >= SPELLS.leap.cost:
+				if velocity.y <= 0:
+					velocity.y += 1 * JUMP_VELOCITY
+				else:
+					velocity.y = 1 * JUMP_VELOCITY
+				$AnimatedSprite2D.play("Leap")
+				manaPower -= SPELLS.leap.cost
+				$SpellEnd.start()
+        ui.castSpell(spell)
+		if (spell == 'waterjet'):
+			if manaPower >= SPELLS.waterjet.cost:
+				velocity.x += 1 * SPEED
+				manaPower -= SPELLS.waterjet.cost
+				$AnimatedSprite2D.animation = "WaterJet"
+				$SpellEnd.start()
+        ui.castSpell(spell)
+		if (spell == 'explosion'):
+			if manaPower >= SPELLS.explosion.cost:
+				if velocity.y <= 0:
+					velocity.y += randf_range(1.25, 1.75) * JUMP_VELOCITY
+				else:
+					velocity.y = randf_range(1.25, 1.75) * JUMP_VELOCITY
+				velocity.x += randf_range(-2.75, -2.25) * SPEED
+				manaPower -= SPELLS.explosion.cost
+				$AnimatedSprite2D.play("Explosion")
+				$SpellEnd.start()
+        ui.castSpell(spell)
+		if (spell == 'portal'):
+			if manaPower >= SPELLS.portal.cost:
+				SpawnPortal()
+				$AnimatedSprite2D.animation = "Portal"
+				$SpellEnd.start()
+        ui.castSpell(spell)
+		if (spell == 'lightning'):
+			if manaPower >= SPELLS.lightning.cost:
+				print("lightning")
+				$AnimatedSprite2D.animation = "Lightning"
+				SpawnLightning()
+				$SpellEnd.start()
+        ui.castSpell(spell)
+		if (spell == 'shark'):
+			if manaPower >= SPELLS.shark.cost:
+				print("shark")
+				$AnimatedSprite2D.animation = "Shark"
+				SpawnShark()
+				$SpellEnd.start()
+        ui.castSpell(spell)
+		if (spell == 'flamingring'):
+			if manaPower >= SPELLS.flamingring.cost:
+				print("flamingring")
+				SpawnFlamingRing()
+				$AnimatedSprite2D.animation = "FlamingRing"
+				$SpellEnd.start()
+        ui.castSpell(spell)
+		ui.updateMana(manaPower)
 
 func launch():
-	velocity.x = -3.5 * SPEED
-	velocity.y = 2 * JUMP_VELOCITY
-	$AnimatedSprite2D.frame = 1
+	if SpellsAvailable == false:
+		velocity.x = -3.5 * SPEED
+		velocity.y = 2 * JUMP_VELOCITY
+		$AnimatedSprite2D.frame = 1
+		SpellsAvailable = true
 func getInput():
 	if (GameManager.isLevelFinished()):
 		return
@@ -161,6 +172,83 @@ func _physics_process(delta):
 	getInput()
 	move_and_slide()
 
+func SpawnFlamingRing():
+	var Ring = FLAMING_RING.instantiate()
+	var RingX = position.x - 300
+	var RingY = position.y + randf_range(-50, 50)
+	get_parent().add_child(Ring)
+	Ring.position = Vector2(RingX, RingY)
+
+func DodgedFlamingRing():
+	print("Dodged Ring")
+	
+
+func HitFlamingRing():
+	velocity.x = 100
+	velocity.y = 100
+	$AnimatedSprite2D.animation = "Fall"
+	$SpellEnd.start()
+
+func WentThroughFlamingRing():
+	print("Went through the ring!!!")
+	#Add special score here when adding score points
+
+func SpawnShark():
+	var Shark = SHARK.instantiate()
+	var SharkX = position.x - 550
+	var SharkY = position.y + 900
+	get_parent().add_child(Shark)
+	Shark.position = Vector2(SharkX, SharkY)
+	Shark.SetStartHeight()
+
+func HitShark():
+	velocity.x = -50
+	velocity.y = 100
+	$AnimatedSprite2D.animation = "Fall"
+
+func UnderShark():
+	print("Under The Shark!!!!")
+	#Special score here
+
+func DodgedShark():
+	print("Dodged Shark")
+
+func SpawnLightning():
+	var Lightning = LIGHTNING.instantiate()
+	var LightningX = position.x + velocity.x * .6
+	var LightningY = position.y - 100
+	get_parent().add_child(Lightning)
+	Lightning.position.x = LightningX
+	Lightning.position.y = LightningY
+	print(Lightning.position)
+	print(position)
+
+func DodgeLightning():
+	print("Dodged Lightning")
+
+func LightningHit():
+	velocity.y = 100
+	velocity.x /= 2
+	$AnimatedSprite2D.animation = "Fall"
+	$SpellEnd.start()
+
+func SpawnPortal():
+	var Portal = PORTAL.instantiate()
+	var PortalPositionX = position.x - 300
+	var PortalPositionY = position.y + randf_range(-50, 50)
+	get_parent().add_child(Portal)
+	Portal.position.x = PortalPositionX
+	Portal.position.y = PortalPositionY
+
+func PortalDodge():
+	print("Dodged Portal")
+
+func EnterPortal():
+	position.y = position.y + 300
+	velocity.y = -1 * velocity.x
+	velocity.x = 0
+	$AnimatedSprite2D.play("PortalExit")
+	$SpellEnd.start()
 
 func _on_spell_end_timeout():
 	$AnimatedSprite2D.animation = "WizardBase"

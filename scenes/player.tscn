@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ccgxpwrltjlt1"]
+[gd_scene load_steps=26 format=3 uid="uid://ccgxpwrltjlt1"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_gj1v2"]
 [ext_resource type="Texture2D" uid="uid://bey8i082ju01h" path="res://assets/Art/WizardSprites-Sheet.png" id="2_0dftp"]
@@ -54,6 +54,10 @@ region = Rect2(0, 256, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yb8s"]
 atlas = ExtResource("2_0dftp")
 region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mopc5"]
+atlas = ExtResource("2_0dftp")
+region = Rect2(0, 704, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j622e"]
 atlas = ExtResource("2_0dftp")
@@ -161,10 +165,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7yb8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mopc5")
 }],
 "loop": false,
 "name": &"PortalExit",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -209,7 +216,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 2
+collision_mask = 122
 script = ExtResource("1_gj1v2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -225,7 +232,7 @@ editor_draw_limits = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4k2k3")
-animation = &"Explosion"
+animation = &"JumpStart"
 
 [node name="SpellEnd" type="Timer" parent="."]
 wait_time = 0.75
