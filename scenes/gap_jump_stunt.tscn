@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dd0845qirindo" path="res://assets/Art/1280x720-50px.png" id="4_botvm"]
 [ext_resource type="PackedScene" uid="uid://cspqffhv5w2xn" path="res://scenes/landing_zone.tscn" id="5_2o6hl"]
 [ext_resource type="PackedScene" uid="uid://tt3ecsy85jue" path="res://scenes/falling_zone.tscn" id="6_bobw3"]
+[ext_resource type="Texture2D" uid="uid://2b0sycndji1q" path="res://assets/Art/clouds.png" id="7_j6q4u"]
 [ext_resource type="AudioStream" uid="uid://5ylxicwkayt4" path="res://assets/SoundEffects/AirJet1.wav" id="7_0qoso"]
 [ext_resource type="AudioStream" uid="uid://brc2wshu35422" path="res://assets/SoundEffects/WaterJet1.wav" id="8_4aeq1"]
 [ext_resource type="AudioStream" uid="uid://caxalgejcjjtp" path="res://assets/SoundEffects/Leap.wav" id="9_w38ko"]
@@ -64,6 +65,7 @@ position = Vector2(2942, 373)
 [node name="UI" parent="." instance=ExtResource("3_68a5j")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_repeat = 2
 position = Vector2(1581.5, 395.5)
 scale = Vector2(3.47109, 2.09861)
@@ -74,6 +76,22 @@ position = Vector2(-2307, 471)
 
 [node name="FallingZone" parent="." instance=ExtResource("6_bobw3")]
 position = Vector2(10, 913)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(6000, 2000)
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(4000, 0)
+texture = ExtResource("7_j6q4u")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("7_j6q4u")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(2000, 0)
+texture = ExtResource("7_j6q4u")
 
 [node name="AirJetSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
