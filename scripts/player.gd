@@ -73,6 +73,8 @@ func castSpell(spell):
 				$AnimatedSprite2D.animation = "AirJet"
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				%AirJetSound.pitch_scale = randf_range(.95, 1.1)
+				%AirJetSound.play()
 		if (spell == 'leap'):
 			if manaPower >= SPELLS.leap.cost:
 				if velocity.y <= 0:
@@ -83,6 +85,8 @@ func castSpell(spell):
 				manaPower -= SPELLS.leap.cost
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				%LeapSound.pitch_scale = randf_range(.95, 1.1)
+				%LeapSound.play()
 		if (spell == 'waterjet'):
 			if manaPower >= SPELLS.waterjet.cost:
 				velocity.x += 1 * SPEED
@@ -90,6 +94,8 @@ func castSpell(spell):
 				$AnimatedSprite2D.animation = "WaterJet"
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				%WaterJetSound.pitch_scale = randf_range(.95, 1.1)
+				%WaterJetSound.play()
 		if (spell == 'explosion'):
 			if manaPower >= SPELLS.explosion.cost:
 				if velocity.y <= 0:
@@ -101,12 +107,15 @@ func castSpell(spell):
 				$AnimatedSprite2D.play("Explosion")
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				%ExplosionSound.pitch_scale = randf_range(.95, 1.1)
+				%ExplosionSound.play()
 		if (spell == 'portal'):
 			if manaPower >= SPELLS.portal.cost:
 				SpawnPortal()
 				$AnimatedSprite2D.animation = "Portal"
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				%PortalSound.play()
 		if (spell == 'lightning'):
 			if manaPower >= SPELLS.lightning.cost:
 				print("lightning")
@@ -114,6 +123,7 @@ func castSpell(spell):
 				SpawnLightning()
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				%LightningSound.play()
 		if (spell == 'shark'):
 			if manaPower >= SPELLS.shark.cost:
 				print("shark")
@@ -121,6 +131,7 @@ func castSpell(spell):
 				SpawnShark()
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				%SharkSound.play()
 		if (spell == 'flamingring'):
 			if manaPower >= SPELLS.flamingring.cost:
 				print("flamingring")
@@ -128,6 +139,7 @@ func castSpell(spell):
 				$AnimatedSprite2D.animation = "FlamingRing"
 				$SpellEnd.start()
 				ui.castSpell(spell)
+				%FlamingRingSound.play()
 		ui.updateMana(manaPower)
 
 func launch():
@@ -136,6 +148,7 @@ func launch():
 		velocity.y = 2 * JUMP_VELOCITY
 		$AnimatedSprite2D.frame = 1
 		SpellsAvailable = true
+		%JumpStartSound.play()
 func getInput():
 	if (GameManager.isLevelFinished()):
 		return
@@ -188,6 +201,7 @@ func HitFlamingRing():
 	velocity.y = 100
 	$AnimatedSprite2D.animation = "Fall"
 	$SpellEnd.start()
+	%HitObstacleSound.play()
 
 func WentThroughFlamingRing():
 	print("Went through the ring!!!")
@@ -205,6 +219,7 @@ func HitShark():
 	velocity.x = -50
 	velocity.y = 100
 	$AnimatedSprite2D.animation = "Fall"
+	%HitObstacleSound.play()
 
 func UnderShark():
 	print("Under The Shark!!!!")
@@ -231,6 +246,7 @@ func LightningHit():
 	velocity.x /= 2
 	$AnimatedSprite2D.animation = "Fall"
 	$SpellEnd.start()
+	%HitObstacleSound.play()
 
 func SpawnPortal():
 	var Portal = PORTAL.instantiate()
@@ -249,6 +265,7 @@ func EnterPortal():
 	velocity.x = 0
 	$AnimatedSprite2D.play("PortalExit")
 	$SpellEnd.start()
+	%EnterPortalSound.play()
 
 func _on_spell_end_timeout():
 	$AnimatedSprite2D.animation = "WizardBase"
