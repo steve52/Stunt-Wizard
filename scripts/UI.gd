@@ -21,14 +21,14 @@ func updateMana(newVal):
 	mana_points.text = str(newVal)
 
 func setSpellManaValues():
-	air_jet.text = "Air Jet (" + str(player.SPELLS.airjet.cost) + " MP)\n ←"
-	water_jet.text = "Water Jet (" + str(player.SPELLS.waterjet.cost) + " MP)\n →"
-	leap.text = "Leap (" + str(player.SPELLS.leap.cost) + " MP)\n ↑"
-	explosion.text = "Explosion (" + str(player.SPELLS.explosion.cost) + " MP)\n ↓"
-	portal.text = "Portal (" + str(player.SPELLS.portal.cost) + " MP)\n 1"
-	lightning.text = "Lightning (" + str(player.SPELLS.lightning.cost) + " MP)\n 2"
-	shark.text = "Shark (" + str(player.SPELLS.shark.cost) + " MP)\n 3"
-	flaming_ring.text = "Flaming Ring (" + str(player.SPELLS.flamingring.cost) + " MP)\n 4"
+	air_jet.text = "💨 (" + str(player.SPELLS.airjet.cost) + " MP)\n ←"
+	water_jet.text = "💦 (" + str(player.SPELLS.waterjet.cost) + " MP)\n →"
+	leap.text = "🤾🏻 (" + str(player.SPELLS.leap.cost) + " MP)\n ↑"
+	explosion.text = "💥 (" + str(player.SPELLS.explosion.cost) + " MP)\n ↓"
+	portal.text = "🟣 (" + str(player.SPELLS.portal.cost) + " MP)\n 1"
+	lightning.text = "⚡️ (" + str(player.SPELLS.lightning.cost) + " MP)\n 2"
+	shark.text = "🦈 (" + str(player.SPELLS.shark.cost) + " MP)\n 3"
+	flaming_ring.text = "🔥 (" + str(player.SPELLS.flamingring.cost) + " MP)\n 4"
 
 func _ready():
 	level_complete_msg.visible = false
@@ -86,18 +86,25 @@ func castSpell(spell):
 	
 
 # return the btn to normal
-func _on_timer_timeout(btn) -> void:
-	btn.remove_theme_stylebox_override("normal")
-	btn.remove_theme_stylebox_override("hover")
+func _on_timer_timeout(btn, style) -> void:
+	btn.add_theme_stylebox_override("normal", style)
+	btn.add_theme_stylebox_override("hover", style)
+	btn.add_theme_stylebox_override("pressed", style)
+	btn.add_theme_stylebox_override("focus", style)
+	#btn.remove_theme_stylebox_override("normal")
+	#btn.remove_theme_stylebox_override("hover")
 
 func animateButton(btn):
 	# duplicate the btn stylebox so we can modify it
+	var old_stylebox_theme: StyleBoxFlat = btn.get_theme_stylebox("normal").duplicate()
 	var activated_stylebox_theme: StyleBoxFlat = btn.get_theme_stylebox("normal").duplicate()
 	activated_stylebox_theme.bg_color = Color.ORANGE
 	
 	# override the btn style
 	btn.add_theme_stylebox_override("normal", activated_stylebox_theme)
 	btn.add_theme_stylebox_override("hover", activated_stylebox_theme)
+	btn.add_theme_stylebox_override("pressed", activated_stylebox_theme)
+	btn.add_theme_stylebox_override("focus", activated_stylebox_theme)
 	
 	# start a timer for returning to normal
 	var timer = Timer.new()
@@ -105,7 +112,7 @@ func animateButton(btn):
 	timer.one_shot = true
 	timer.wait_time = 1.0
 	timer.start()
-	timer.timeout.connect(_on_timer_timeout.bind(btn))
+	timer.timeout.connect(_on_timer_timeout.bind(btn, old_stylebox_theme))
 
 
 
