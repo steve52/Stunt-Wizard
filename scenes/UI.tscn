@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://w6fhh20qoq77"]
+[gd_scene load_steps=9 format=3 uid="uid://w6fhh20qoq77"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_mfq3j"]
 [ext_resource type="StyleBox" uid="uid://dq5h4hurbt8ot" path="res://spell_icon_stylebox.tres" id="2_7wkcl"]
@@ -31,6 +31,9 @@ animations = [{
 "name": &"DevTimeUnlocked",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3objd"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_mfq3j")
@@ -219,7 +222,7 @@ grow_vertical = 2
 [node name="StyleTiers" type="AnimatedSprite2D" parent="StyleBoard"]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_e81wa")
-animation = &"DevTimeUnlocked"
+animation = &"Default"
 
 [node name="EndStyle" type="Label" parent="StyleBoard"]
 layout_mode = 0
@@ -264,6 +267,16 @@ offset_top = -225.0
 offset_right = 84.0
 offset_bottom = -202.0
 text = "You got the biscuit!!"
+
+[node name="Biscuit" type="Label" parent="StyleBoard"]
+visible = false
+layout_mode = 0
+offset_left = -77.0
+offset_top = -224.0
+offset_right = 84.0
+offset_bottom = -201.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3objd")
+text = "You won the biscuit! "
 
 [node name="StylePointIndicator" type="Node2D" parent="."]
 position = Vector2(573, 159)

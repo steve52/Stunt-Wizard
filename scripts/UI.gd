@@ -9,7 +9,7 @@ extends CanvasLayer
 @onready var level_complete_msg = $LevelCompleteMsg
 @onready var level_failed_msg = $LevelFailedMsg
 var GioScore = 8300
-var SteveScore = 0
+var SteveScore = 3250
 var End = -7600
 var Won = false
 @onready var Player = %Player
@@ -31,14 +31,14 @@ func updateMana(newVal):
 func updateStyle(newVal):
 	$StyleBoard/EndStyle.text = str(newVal)
 	$Style.text = "Style: " + str(newVal)
-	#if newVal >= GioScore or newVal >= SteveScore:
-	if newVal >= GioScore:
+	if newVal >= GioScore or newVal >= SteveScore:
 		GameManager.DevScoreUnlocked = true
 	if GameManager.DevScoreUnlocked == true:
 		print('dev unlocked')
 		$StyleBoard/StyleTiers.animation = "DevTimeUnlocked"
 	if newVal >= 3000:
 		Won = true
+		$StyleBoard/Biscuit.visible = true
 
 func setSpellManaValues():
 	air_jet.text = "💨 (" + str(player.SPELLS.airjet.cost) + " MP)\n ←"
