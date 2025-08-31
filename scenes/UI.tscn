@@ -1,20 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://w6fhh20qoq77"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_mfq3j"]
+[ext_resource type="StyleBox" uid="uid://dq5h4hurbt8ot" path="res://spell_icon_stylebox.tres" id="2_7wkcl"]
 [ext_resource type="Texture2D" uid="uid://dqohvuf58vtkv" path="res://assets/Art/End Menu-Sheet.png" id="2_amdnj"]
 [ext_resource type="FontFile" uid="uid://bhbjen6m3lld4" path="res://assets/Art/VCR_OSD_MONO_1.001.ttf" id="3_eovhj"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2i1n"]
-content_margin_left = 10.0
-content_margin_top = 7.0
-content_margin_right = 10.0
-content_margin_bottom = 0.0
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.359069, 0.359069, 0.359069, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i2di"]
 atlas = ExtResource("2_amdnj")
@@ -125,81 +114,81 @@ offset_bottom = 40.0
 
 [node name="Air Jet" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/focus = SubResource("StyleBoxFlat_t2i1n")
+theme_override_styles/normal = ExtResource("2_7wkcl")
+theme_override_styles/hover = ExtResource("2_7wkcl")
+theme_override_styles/pressed = ExtResource("2_7wkcl")
+theme_override_styles/disabled = ExtResource("2_7wkcl")
+theme_override_styles/focus = ExtResource("2_7wkcl")
 text = "💨
 ←"
 
 [node name="Water Jet" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/focus = SubResource("StyleBoxFlat_t2i1n")
+theme_override_styles/normal = ExtResource("2_7wkcl")
+theme_override_styles/hover = ExtResource("2_7wkcl")
+theme_override_styles/pressed = ExtResource("2_7wkcl")
+theme_override_styles/disabled = ExtResource("2_7wkcl")
+theme_override_styles/focus = ExtResource("2_7wkcl")
 text = "💦
 →"
 
 [node name="Leap" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/focus = SubResource("StyleBoxFlat_t2i1n")
+theme_override_styles/normal = ExtResource("2_7wkcl")
+theme_override_styles/hover = ExtResource("2_7wkcl")
+theme_override_styles/pressed = ExtResource("2_7wkcl")
+theme_override_styles/disabled = ExtResource("2_7wkcl")
+theme_override_styles/focus = ExtResource("2_7wkcl")
 text = "🤾🏻
 ↑"
 
 [node name="Explosion" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/focus = SubResource("StyleBoxFlat_t2i1n")
+theme_override_styles/normal = ExtResource("2_7wkcl")
+theme_override_styles/hover = ExtResource("2_7wkcl")
+theme_override_styles/pressed = ExtResource("2_7wkcl")
+theme_override_styles/disabled = ExtResource("2_7wkcl")
+theme_override_styles/focus = ExtResource("2_7wkcl")
 text = "💥
 ↓"
 
 [node name="Portal" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/focus = SubResource("StyleBoxFlat_t2i1n")
+theme_override_styles/normal = ExtResource("2_7wkcl")
+theme_override_styles/hover = ExtResource("2_7wkcl")
+theme_override_styles/pressed = ExtResource("2_7wkcl")
+theme_override_styles/disabled = ExtResource("2_7wkcl")
+theme_override_styles/focus = ExtResource("2_7wkcl")
 text = "🟣
 1"
 
 [node name="Lightning" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/focus = SubResource("StyleBoxFlat_t2i1n")
+theme_override_styles/normal = ExtResource("2_7wkcl")
+theme_override_styles/hover = ExtResource("2_7wkcl")
+theme_override_styles/pressed = ExtResource("2_7wkcl")
+theme_override_styles/disabled = ExtResource("2_7wkcl")
+theme_override_styles/focus = ExtResource("2_7wkcl")
 text = "⚡️
 2"
 
 [node name="Shark" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/focus = SubResource("StyleBoxFlat_t2i1n")
+theme_override_styles/normal = ExtResource("2_7wkcl")
+theme_override_styles/hover = ExtResource("2_7wkcl")
+theme_override_styles/pressed = ExtResource("2_7wkcl")
+theme_override_styles/disabled = ExtResource("2_7wkcl")
+theme_override_styles/focus = ExtResource("2_7wkcl")
 text = "🦈
 3"
 
 [node name="Flaming ring" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_t2i1n")
-theme_override_styles/focus = SubResource("StyleBoxFlat_t2i1n")
+theme_override_styles/normal = ExtResource("2_7wkcl")
+theme_override_styles/hover = ExtResource("2_7wkcl")
+theme_override_styles/pressed = ExtResource("2_7wkcl")
+theme_override_styles/disabled = ExtResource("2_7wkcl")
+theme_override_styles/focus = ExtResource("2_7wkcl")
 text = "🔥
 4"
 

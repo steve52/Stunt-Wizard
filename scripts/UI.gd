@@ -23,6 +23,8 @@ var Won = false
 @onready var flaming_ring = $"HBoxContainer/Flaming ring"
 @onready var style_point_indicator = $StylePointIndicator
 
+const SPELL_ICON_STYLEBOX = preload("res://spell_icon_stylebox.tres")
+
 func updateMana(newVal):
 	mana_points.text = str(newVal)
 
@@ -111,17 +113,16 @@ func castSpell(spell):
 	
 
 # return the btn to normal
-func _on_timer_timeout(btn, style) -> void:
-	btn.add_theme_stylebox_override("normal", style)
-	btn.add_theme_stylebox_override("hover", style)
-	btn.add_theme_stylebox_override("pressed", style)
-	btn.add_theme_stylebox_override("focus", style)
+func _on_timer_timeout(btn) -> void:
+	btn.add_theme_stylebox_override("normal", SPELL_ICON_STYLEBOX)
+	btn.add_theme_stylebox_override("hover", SPELL_ICON_STYLEBOX)
+	btn.add_theme_stylebox_override("pressed", SPELL_ICON_STYLEBOX)
+	btn.add_theme_stylebox_override("focus", SPELL_ICON_STYLEBOX)
 	#btn.remove_theme_stylebox_override("normal")
 	#btn.remove_theme_stylebox_override("hover")
 
 func animateButton(btn):
 	# duplicate the btn stylebox so we can modify it
-	var old_stylebox_theme: StyleBoxFlat = btn.get_theme_stylebox("normal").duplicate()
 	var activated_stylebox_theme: StyleBoxFlat = btn.get_theme_stylebox("normal").duplicate()
 	activated_stylebox_theme.bg_color = Color.ORANGE
 	
@@ -137,7 +138,7 @@ func animateButton(btn):
 	timer.one_shot = true
 	timer.wait_time = 1.0
 	timer.start()
-	timer.timeout.connect(_on_timer_timeout.bind(btn, old_stylebox_theme))
+	timer.timeout.connect(_on_timer_timeout.bind(btn))
 
 
 
