@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ceh4i2415lual"]
+[gd_scene load_steps=7 format=3 uid="uid://cdswskinyln1d"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_sqe78"]
+[ext_resource type="FontFile" uid="uid://bn0a75wmldh5t" path="res://assets/Blazed.ttf" id="2_30wtj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g63hy"]
 content_margin_left = 15.0
@@ -49,7 +50,7 @@ corner_radius_bottom_left = 5
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_sqe78")
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -58,6 +59,7 @@ offset_top = 120.0
 offset_right = 217.0
 offset_bottom = 216.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_30wtj")
 theme_override_font_sizes/font_size = 70
 text = "Stunt Wizard"
 
@@ -103,6 +105,40 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nc7xi")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_co6ys")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ge4i3")
 text = "Exit
+"
+
+[node name="Label2" type="RichTextLabel" parent="."]
+offset_left = 73.0
+offset_top = 272.0
+offset_right = 414.0
+offset_bottom = 571.0
+text = "You are a Stunt Wizard!
+You are a Wizard who does stunts!
+
+You must jump over a wide gap and perform cool stunts in order to gain Style Points. Casting spells to do stunts costs Mana, though, so be sure you don't run out before reaching the other end of the gap or you may not make it across!
+
+If you have at least 3000 Style Points when you land, you win a biscuit!
+
+"
+fit_content = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 737.0
+offset_top = 249.0
+offset_right = 1148.0
+offset_bottom = 607.0
+text = "Spells
+
+Air Jet - push you forward
+Water Jest - push you back
+Leap - push you up
+Explosion - propel you up and forward
+Portal - An obstacle to dodge
+Lightning - An obstacle to dodge
+Shark  - An obstacle to dodge
+Ring of Fire - An obstacle to dodge
+
+Some spells will yield different Style Points depending on how you choose to interact with the obstacle. E.g. You get more points for flying under the sharks than going over them.
 "
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
