@@ -21,16 +21,19 @@ var Won = false
 @onready var lightning = $HBoxContainer/Lightning
 @onready var shark = $HBoxContainer/Shark
 @onready var flaming_ring = $"HBoxContainer/Flaming ring"
+@onready var style_point_indicator = $StylePointIndicator
 
 func updateMana(newVal):
 	mana_points.text = str(newVal)
 
-
 func updateStyle(newVal):
 	$StyleBoard/EndStyle.text = str(newVal)
-	if newVal >= GioScore or newVal >= SteveScore:
+	$Style.text = "Style: " + str(newVal)
+	#if newVal >= GioScore or newVal >= SteveScore:
+	if newVal >= GioScore:
 		GameManager.DevScoreUnlocked = true
 	if GameManager.DevScoreUnlocked == true:
+		print('dev unlocked')
 		$StyleBoard/StyleTiers.animation = "DevTimeUnlocked"
 	if newVal >= 3000:
 		Won = true
@@ -162,3 +165,42 @@ func _on_shark_pressed():
 
 func _on_flaming_ring_pressed():
 	player.castSpell('flamingring')
+
+
+func displayStylePoints(value: int):
+	var isPositive: bool = value >= 0
+	var sign = "+" if isPositive else ""
+	
+	var label = Label.new()
+	label.global_position = style_point_indicator.global_position
+	label.text = sign + str(value)
+	label.z_index = 5
+	label.label_settings = LabelSettings.new()
+	
+	var color = "#0F0" if isPositive else "#F00"
+	
+	label.label_settings.font_color = color
+	label.label_settings.font_size = 18
+	label.label_settings.outline_color = "000"
+	label.label_settings.outline_size = 1
+
+	call_deferred("add_child", label)
+	await label.resized
+	
+	label.pivot_offset = Vector2(label.size/2)
+	
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(
+		label, "position:y", label.position.y - 24, 0.25
+	).set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		label, "position:y", label.position.y, 0.5
+	).set_ease(Tween.EASE_IN).set_delay(0.25)
+	tween.tween_property(
+		label, "scale", Vector2.ZERO, 0.25
+	).set_ease(Tween.EASE_IN).set_delay(0.5)
+	
+	await tween.finished
+	
+	label.queue_free()

@@ -212,6 +212,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Distance: 760"
 
 [node name="StyleBoard" type="Control" parent="."]
+visible = false
 z_index = -1
 layout_mode = 3
 anchors_preset = 8
@@ -243,6 +244,7 @@ theme_override_font_sizes/font_size = 41
 text = "1000"
 
 [node name="Dev Scores" type="Node2D" parent="StyleBoard"]
+visible = false
 position = Vector2(-556, -304)
 
 [node name="Gio Score" type="Label" parent="StyleBoard/Dev Scores"]
@@ -273,6 +275,9 @@ offset_top = -225.0
 offset_right = 84.0
 offset_bottom = -202.0
 text = "You got the biscuit!!"
+
+[node name="StylePointIndicator" type="Node2D" parent="."]
+position = Vector2(573, 159)
 
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="HBoxContainer/Air Jet" to="." method="_on_air_jet_pressed"]

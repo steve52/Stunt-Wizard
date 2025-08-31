@@ -64,6 +64,12 @@ const SPELLS = {
 	}
 }
 
+func updateStylePoints(num):
+	stylePoints += num
+	ui.updateStyle(stylePoints)
+	ui.displayStylePoints(num)
+	
+
 func castSpell(spell):
 	if SpellsAvailable == true:
 		if (spell == 'airjet'):
@@ -109,7 +115,8 @@ func castSpell(spell):
 				ui.castSpell(spell)
 				%ExplosionSound.pitch_scale = randf_range(.95, 1.1)
 				%ExplosionSound.play()
-				stylePoints += SPELLS.explosion.style
+				#stylePoints += SPELLS.explosion.style
+				updateStylePoints(SPELLS.explosion.style)
 		if (spell == 'portal'):
 			if manaPower >= SPELLS.portal.cost:
 				SpawnPortal()
@@ -181,7 +188,6 @@ func getInput():
 		launch()
 
 func _physics_process(delta):
-	ui.updateStyle(stylePoints)
 	if manaPower < 7:
 		print(position.x)
 	if (velocity.x < 0):
@@ -204,7 +210,8 @@ func SpawnFlamingRing():
 
 func DodgedFlamingRing():
 	print("Dodged Ring")
-	stylePoints += SPELLS.flamingring.style.dodge
+	#stylePoints += SPELLS.flamingring.style.dodge
+	updateStylePoints(SPELLS.flamingring.style.dodge)
 
 func HitFlamingRing():
 	velocity.x = 100
@@ -216,8 +223,9 @@ func HitFlamingRing():
 
 func WentThroughFlamingRing():
 	print("Went through the ring!!!")
-	stylePoints += SPELLS.flamingring.style.special
+	#stylePoints += SPELLS.flamingring.style.special
 	#Add special score here when adding score points
+	updateStylePoints(SPELLS.flamingring.style.special)
 
 func SpawnShark():
 	var Shark = SHARK.instantiate()
@@ -232,15 +240,18 @@ func HitShark():
 	velocity.y = 100
 	$AnimatedSprite2D.animation = "Fall"
 	%HitObstacleSound.play()
-	stylePoints += SPELLS.shark.style.fail
+	#stylePoints += SPELLS.shark.style.fail
+	updateStylePoints(SPELLS.shark.style.fail)
 
 func UnderShark():
 	print("Under The Shark!!!!")
-	stylePoints += SPELLS.shark.style.special
+	#stylePoints += SPELLS.shark.style.special
 	#Special score here
+	updateStylePoints(SPELLS.shark.style.special)
 
 func DodgedShark():
-	stylePoints += SPELLS.shark.style.dodge
+	#stylePoints += SPELLS.shark.style.dodge
+	updateStylePoints(SPELLS.shark.style.dodge)
 	print("Dodged Shark")
 
 func SpawnLightning():
@@ -255,7 +266,8 @@ func SpawnLightning():
 
 func DodgeLightning():
 	print("Dodged Lightning")
-	stylePoints += SPELLS.lightning.style.dodge
+	#stylePoints += SPELLS.lightning.style.dodge
+	updateStylePoints(SPELLS.lightning.style.dodge)
 
 func LightningHit():
 	velocity.y = 100
@@ -263,8 +275,8 @@ func LightningHit():
 	$AnimatedSprite2D.animation = "Fall"
 	$SpellEnd.start()
 	%HitObstacleSound.play()
-	stylePoints += SPELLS.lightning.style.fail
-
+	#stylePoints += SPELLS.lightning.style.fail
+	updateStylePoints(SPELLS.lightning.style.fail)
 func SpawnPortal():
 	var Portal = PORTAL.instantiate()
 	var PortalPositionX = position.x - 300
@@ -274,8 +286,8 @@ func SpawnPortal():
 	Portal.position.y = PortalPositionY
 
 func PortalDodge():
-	print("Dodged Portal")
-	stylePoints += SPELLS.portal.style.dodge
+	#stylePoints += SPELLS.portal.style.dodge
+	updateStylePoints(SPELLS.portal.style.dodge)
 
 func EnterPortal():
 	position.y = position.y + 300
@@ -284,7 +296,8 @@ func EnterPortal():
 	$AnimatedSprite2D.play("PortalExit")
 	$SpellEnd.start()
 	%EnterPortalSound.play()
-	stylePoints += SPELLS.portal.style.fail
+	#stylePoints += SPELLS.portal.style.fail
+	updateStylePoints(SPELLS.portal.style.fail)
 
 func _on_spell_end_timeout():
 	$AnimatedSprite2D.animation = "WizardBase"
@@ -297,4 +310,5 @@ func _on_static_body_2d_body_entered(body):
 
 func Landed():
 	$AnimatedSprite2D.play("Win")
-	stylePoints += 1000
+	#stylePoints += 1000
+	updateStylePoints(1000)
